@@ -1,13 +1,24 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Persona {
     
     private String nombre;
     private String apellido;
-    private int id;
+    private String id;
+    private List<Persona> amigos = new ArrayList<Persona>();
     
-    public Persona(String nombre, String apellido, int id) {
+    public Persona(String nombre, String apellido, String id) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.id = id;
+    }
+
+    public Persona(String nombre, String apellido, String id, List<Persona> amigos) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.id = id;
+        this.amigos = amigos;
     }
 
     public String getNombre() {
@@ -26,17 +37,24 @@ public class Persona {
         this.apellido = apellido;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public List<Persona> getAmigos() {
+        return amigos;
+    }
+
+    public void nuevoAmigo(Persona amigo) {
+        this.amigos.add(amigo);
     }
 
     @Override
     public String toString() {
         return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", id=" + id + "]";
     }
-
 }
