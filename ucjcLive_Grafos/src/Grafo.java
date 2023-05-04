@@ -40,8 +40,9 @@ public class Grafo {
         System.out.println("Lista de adyacencia:");
         subListaAdyacencia(v, e);
         // Hay que hacer que pinte datos
+        for (Persona persona : v) {
+            System.out.print(persona.getNombre() + ": ");
+            System.out.println(persona.getAmigos());
+        }
     }
-
-
-
 }

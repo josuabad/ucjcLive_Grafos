@@ -33,5 +33,10 @@ public class Main {
             {joel, isabella}, // e8
             {isabella, jesus} // e9
         };
+
+        Grafo grafo = new Grafo();
+
+        grafo.listaAdyacencia(vertices, aristas);
+
     }
 }
