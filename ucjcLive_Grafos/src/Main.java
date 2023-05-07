@@ -37,6 +37,5 @@ public class Main {
 
         Grafo grafo = new Grafo(vertices, aristas);
         grafo.listaAdyacencia();
-
     }
 }
