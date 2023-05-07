@@ -3,11 +3,13 @@ import java.util.List;
 
 public class Persona {
     
+    // Variables
     private String nombre;
     private String apellido;
     private String id;
     private List<Persona> amigos = new ArrayList<Persona>();
     
+    // Constructores
     public Persona(String nombre, String apellido, String id) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -21,6 +23,7 @@ public class Persona {
         this.amigos = amigos;
     }
 
+    // Getters & Setters
     public String getNombre() {
         return nombre;
     }
@@ -49,7 +52,12 @@ public class Persona {
         return amigos;
     }
 
+    // Métodos
     public void nuevoAmigo(Persona amigo) {
+        /*
+         * Añade a la lista de amigos un nuevo amigo
+         */
+
         this.amigos.add(amigo);
     }
 
