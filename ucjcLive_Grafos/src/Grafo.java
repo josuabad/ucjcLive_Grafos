@@ -1,8 +1,40 @@
 public class Grafo {
+
+    private Persona[] vertices;
+    private Persona[][] aristas;
+
+    // Constructor
+    public Grafo(Persona[] vertices, Persona[][] aristas) {
+        this.vertices = vertices;
+        this.aristas = aristas;
+    }
+
+    // Getters & Setters
+    public Persona[] getVertices() {
+        return vertices;
+    }
+
+    public void setVertices(Persona[] vertices) {
+        this.vertices = vertices;
+    }
+
+    public Persona[][] getAristas() {
+        return aristas;
+    }
+
+    public void setAristas(Persona[][] aristas) {
+        this.aristas = aristas;
+    }
+
     
-    public Persona identificador(Persona[] personas, String id) {
+    // Métodos
+    public Persona identificador(String id) {
+        /*
+         * Identifica al amigo correspondiente al ID que es introducido 
+         */
+
         Persona amigo = null;
-        for (Persona persona : personas) {
+        for (Persona persona : vertices) {
             if(persona.getId() == id) {
                 amigo = persona;
                 break;
@@ -12,37 +44,44 @@ public class Grafo {
     }
 
 
-    public void subListaAdyacencia(Persona[] v, Persona[][] e) { // Luego hacemos la llamada por el numero de aristas para no tener que pasarlas por ahora
+    public void subListaAdyacencia() {
+        /*
+         * Añade todas las conexiones de amigos que tiene un persona a su lista de amigos propia
+         */
 
         String id1 = "";
         String id2 = "";
 
-        for (Persona persona : v) {
-            for(int fila = 0; fila < e.length ; fila++) {
-                for(int columna = 0; columna < e[fila].length ; columna++) {
-                    if(columna == 0) {
-                        id1 = e[fila][columna].getId();
+        for (Persona persona : vertices) {
+            for(int fila = 0; fila < aristas.length ; fila++) {
+                for(int columna = 0; columna < aristas[fila].length ; columna++) {
+                    if(columna == 0) { // Compara todos los IDs para que no se cuente como conexion su propio ID
+                        id1 = aristas[fila][columna].getId();
                     } else {
-                        id2 = e[fila][columna].getId();
+                        id2 = aristas[fila][columna].getId();
                     }
                 }
                 if(persona.getId() == id1) { // Si tienes el mismo id que el comparador, tu amigo es el id contrario
-                    persona.nuevoAmigo(identificador(v, id2));
+                    persona.nuevoAmigo(identificador(id2));
                 } else if(persona.getId() == id2) {
-                    persona.nuevoAmigo(identificador(v, id1));
+                    persona.nuevoAmigo(identificador(id1));
                 }
             }
         }
     }
 
 
-    public void listaAdyacencia(Persona[] v, Persona[][] e) {
+    public void listaAdyacencia() {
+        /*
+         * Logra enseñar por pantalla la lista de amigos que se crea en subListaAdyacencia()
+         */
+
         System.out.println("Lista de adyacencia:");
-        subListaAdyacencia(v, e);
+        subListaAdyacencia(); // Guarda a todos los amigos
         // Hay que hacer que pinte datos
-        for (Persona persona : v) {
-            System.out.print(persona.getNombre() + ": ");
-            System.out.println(persona.getAmigos());
+        for (Persona persona : vertices) {
+            System.out.print(persona.getNombre() + ": "); // Muestra el nombre de la persona
+            System.out.println(persona.getAmigos()); // Muestra todos los amigos de esa persona
         }
     }
 }

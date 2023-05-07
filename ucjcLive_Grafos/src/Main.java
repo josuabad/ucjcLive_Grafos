@@ -2,8 +2,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // El grafo que vamos a representar esta formado por las personas que usan la red social y sus relaciones
-        // Hay que crear a las personas: Maria, Diego, Matias, Edu, Claudia, Pablo, Josu, Joel, Isabella, Jesus
+        // El grafo que vamos a representar esta formado por las relaciones que tienen unas personas que usan una red social
+        // Cabe resaltar que es un grafo sin direcciones
+        // Se crea a las personas
         Persona maria = new Persona("María", "Herrainz", "0000m");
         Persona diego = new Persona("Diego", "Serrano", "0001d");
         Persona matias = new Persona("Matías", "Reinoso", "0002m");
@@ -17,7 +18,7 @@ public class Main {
 
 
         // Si un grafo (G) = (vertices (V), aristas (E))
-        // Entonces, las personas son los vertices
+        // Entonces, las personas son los vertices y las conexiones de amigos son las aristas
         Persona[] vertices = {
             maria, diego, matias, edu, claudia, pablo, josu, joel, isabella, jesus
         };
@@ -34,9 +35,8 @@ public class Main {
             {isabella, jesus} // e9
         };
 
-        Grafo grafo = new Grafo();
-
-        grafo.listaAdyacencia(vertices, aristas);
+        Grafo grafo = new Grafo(vertices, aristas);
+        grafo.listaAdyacencia();
 
     }
 }
