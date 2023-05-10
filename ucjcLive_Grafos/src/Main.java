@@ -1,6 +1,10 @@
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
+        // Declaración de un Scanner para obtener Input del usuario
+        Scanner scan = new Scanner(System.in);
 
         // El grafo que vamos a representar esta formado por las relaciones que tienen unas personas que usan una red social
         // Cabe resaltar que es un grafo sin direcciones
@@ -35,22 +39,21 @@ public class Main {
             {isabella, jesus} // e9
         };
 
-        Grafo grafo = new MatrizIncidencia(vertices, aristas);
-        grafo.listaAdyacencia();
-        // System.out.println("==========================");
-        // System.out.println(claudia.getAmigos().size());
+        // Se declara y crea el grafo
+        Grafo grafo = new Grafo(vertices, aristas);
+ 
+        // Ejecución
+        System.out.print("¿Quieres enseñar la lista de adyacencia [A] o la matriz de incidencia [I]? ");
+        String opcion = scan.nextLine();
 
+        if (opcion.equalsIgnoreCase("A")) {
+           grafo.listaAdyacencia();
+        } else if (opcion.equalsIgnoreCase("I")) {
+            grafo.matrizIncidencia();
+        } else {
+            System.out.println("ERROR");
+        }
 
-        System.out.println();
-        System.out.println();
-        System.out.println();
-
-
-   
-        grafo.posicionFila();
-
-
-
-
+        scan.close();
     }
 }

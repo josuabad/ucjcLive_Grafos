@@ -71,39 +71,16 @@ public class Grafo {
     }
 
 
-    public void listaAdyacencia() {
+    public byte[][] posicionamintoMatrizIncidencia() {
         /*
-         * Logra enseñar por pantalla la lista de amigos que se crea en subListaAdyacencia()
+         * Método que da forma a la matriz de incidencia por medio de un array 2x2 de bytes
+         * En donde las filas representan a las personas
+         * Y las columnas representan a las aristas
+         * 
+         * Devuelve la matriz
          */
 
-        System.out.println("Lista de adyacencia:");
-        subListaAdyacencia(); // Guarda a todos los amigos
-        // Hay que hacer que pinte datos
-        for (Persona persona : vertices) {
-            System.out.print(persona.getNombre() + ": "); // Muestra el nombre de la persona
-            System.out.println(persona.getAmigos()); // Muestra todos los amigos de esa persona
-        }
-    }
-
-
-
-
-
-
-
-    public void posicionFila() {
         byte[][] ubicacionConexionesXAmigo = new byte[getVertices().length][getAristas().length];
-
-        // for (Persona amigo : getVertices()) {
-        //     for (int x = 0 ; x < getAristas().length ; x++) {
-        //         for(int y = 0 ; y < getAristas()[x].length ; y++) {
-        //             if(getAristas()[x][y].getId() == amigo.getId()) {
-                        
-        //             }
-        //         }            
-        //     } 
-        // }
-
         for(int amigo = 0 ; amigo < getVertices().length ; amigo++) {
             for (int x = 0 ; x < getAristas().length ; x++) {
                 for(int y = 0 ; y < getAristas()[x].length ; y++) {
@@ -113,36 +90,49 @@ public class Grafo {
                 }
             }
         }
+        return ubicacionConexionesXAmigo;
+    }
+
+    
+    public void listaAdyacencia() {
+        /*
+         * Logra enseñar por pantalla la lista de amigos que se crea en subListaAdyacencia()
+         */
+
+        System.out.println("\nLista de adyacencia:\n");
+        subListaAdyacencia(); // Guarda a todos los amigos
+        // Hay que hacer que pinte datos
+        for (Persona persona : vertices) {
+            System.out.print(persona.getNombre() + ": "); // Muestra el nombre de la persona
+            System.out.println(persona.getAmigos()); // Muestra todos los amigos de esa persona
+        }
+    }
 
 
+    public void matrizIncidencia() {
+        /*
+         * Pinta en pantalla la matriz de incidencia con un formato bonito
+         */
+        
+        byte[][] matriz = posicionamintoMatrizIncidencia();
+        System.out.println("\nMatriz de incidencia:\n");
+        for(int arista = 1 ; arista < matriz.length ; arista++) {
+            System.out.print("e" + arista + " ");
+        }
+        System.out.print("  |");
+        System.out.println();
 
-
-        for (int x = 0 ; x < ubicacionConexionesXAmigo.length ; x++) {
-            for(int y = 0 ; y < ubicacionConexionesXAmigo[x].length ; y++) {
-                System.out.print(ubicacionConexionesXAmigo[x][y]);
+        for(int arista = 1 ; arista < matriz.length ; arista++) {
+            System.out.print("----");
+        }
+        System.out.println();
+        for (int x = 0 ; x < matriz.length ; x++) {
+            for(int y = 0 ; y < matriz[x].length ; y++) {
+                System.out.print(matriz[x][y] + "  ");
             }
+            System.out.print("  |  " + getVertices()[x].getNombre());
+
             System.out.println();
         }
-
-
-        
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 }
