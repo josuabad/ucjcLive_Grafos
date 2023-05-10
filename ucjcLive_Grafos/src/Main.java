@@ -35,7 +35,22 @@ public class Main {
             {isabella, jesus} // e9
         };
 
-        Grafo grafo = new Grafo(vertices, aristas);
+        Grafo grafo = new MatrizIncidencia(vertices, aristas);
         grafo.listaAdyacencia();
+        // System.out.println("==========================");
+        // System.out.println(claudia.getAmigos().size());
+
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+
+   
+        grafo.posicionFila();
+
+
+
+
     }
 }

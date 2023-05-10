@@ -8,6 +8,7 @@ public class Persona {
     private String apellido;
     private String id;
     private List<Persona> amigos = new ArrayList<Persona>();
+    private byte[] ubicacionMatrizIncidencia;
     
     // Constructores
     public Persona(String nombre, String apellido, String id) {
@@ -50,6 +51,18 @@ public class Persona {
 
     public List<Persona> getAmigos() {
         return amigos;
+    }
+
+    public void setAmigos(List<Persona> amigos) {
+        this.amigos = amigos;
+    }
+
+    public byte[] getUbicacionMatrizIncidencia() {
+        return ubicacionMatrizIncidencia;
+    }
+
+    public void setUbicacionMatrizIncidencia(byte[] ubicacionMatrizIncidencia) {
+        this.ubicacionMatrizIncidencia = ubicacionMatrizIncidencia;
     }
 
     // Métodos
